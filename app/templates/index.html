@@ -3,24 +3,102 @@
 
 <head>
     <title>NFL Play Prediction</title>
+    <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
 </head>
 
 <body>
-    <h1>Model Input</h1>
-    <form action="/post" method="post">
-        <input type="text" name="drive" placeholder="Drive"><br>
-        <input type="text" name="qtr" placeholder="Quarter"><br>
-        <input type="text" name="quarter_seconds_remaining" placeholder="Seconds Remaining"><br>
-        <input type="text" name="down" placeholder="Down"><br>
-        <input type="text" name="ydstogo" placeholder="Yards To Go"><br>
-        <input type="text" name="yardline_100" placeholder="Yard Line"><br>
-        <input type="text" name="shotgun" placeholder="Shotgun"><br>
-        <input type="text" name="no_huddle" placeholder="No Huddle"><br>
-        <input type="text" name="score_differential" placeholder="Score Differential"><br>
-        <input type="text" name="spread_line" placeholder="Spread Line"><br>
-        <input type="text" name="season" placeholder="Season"><br>
-        <button type="submit">Predict</button>
-    </form>
+    <h1 class="text-4xl text-center max-w-sm mx-auto">Model Input</h1>
+    <div>
+        <form class="max-w-sm mx-auto">
+            <div class="mb-5">
+                <label for="drive" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Drive</label>
+                <input type="number" id="drive"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="1" />
+            </div>
+
+            <div class="mb-5">
+                <label for="qtr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quarter</label>
+                <input type="number" id="qtr"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="1" />
+            </div>
+
+            <div class="mb-5">
+                <label for="quarter_seconds_remaining"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seconds Remaining</label>
+                <input type="number" id="quarter_seconds_remaining"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="900" />
+            </div>
+
+            <div class="mb-5">
+                <label for="down" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Down</label>
+                <input type="number" id="down"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="1" />
+            </div>
+
+            <div class="mb-5">
+                <label for="ydstogo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Yards To
+                    Go</label>
+                <input type="number" id="ydstogo"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="10" />
+            </div>
+
+            <div class="mb-5">
+                <label for="yardline_100" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Yard
+                    Line</label>
+                <input type="number" id="yardline_100"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="75" />
+            </div>
+
+            <div class="flex items-start mb-5">
+                <div class="flex items-center h-5">
+                    <input id="shotgun" type="checkbox" value=""
+                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
+                </div>
+                <label for="shotgun" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Shotgun</label>
+            </div>
+
+            <div class="flex items-start mb-5">
+                <div class="flex items-center h-5">
+                    <input id="no_huddle" type="checkbox" value=""
+                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
+                </div>
+                <label for="no_huddle" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No
+                    Huddle</label>
+            </div>
+
+            <div class="mb-5">
+                <label for="score_differential"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Score Differential</label>
+                <input type="number" id="score_differential"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="1" />
+            </div>
+
+            <div class="mb-5">
+                <label for="spread_line" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Spread
+                    Line</label>
+                <input type="number" id="spread_line"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="1" />
+            </div>
+
+            <div class="mb-5">
+                <label for="season" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Season</label>
+                <input type="number" id="season"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="2023" />
+            </div>
+
+            <button type="predict"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Predict</button>
+        </form>
+    </div>
 </body>
 
 </html>
