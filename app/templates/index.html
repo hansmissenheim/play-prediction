@@ -12,7 +12,7 @@
 <body>
     <main class="flex flex-col items-center h-screen py-8 bg-gray-100">
         <div class="max-w-6xl w-full px-6 py-8 bg-white rounded-lg shadow-lg">
-            <h1>Model Input</h1>
+            <h1 class="text-xl font-bold mb-4">Input Parameters</h1>
             <form hx-post="/predict" hx-trigger="submit" hx-target="#predictionOutput">
                 <div>
                     <label for="drive">Drive</label>
@@ -81,7 +81,7 @@
             </form>
 
             <div>
-                <h1>Model Output</h1>
+                <h1 class="text-xl font-bold mt-8 mb-4">Output</h1>
                 <h2 id="predictionOutput">0 | 0</h2>
             </div>
         </div>
