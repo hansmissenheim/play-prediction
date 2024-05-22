@@ -53,13 +53,21 @@
                 <div>
                     <label class="block font-medium mb-2" for="ydstogo">Yards To
                         Go</label>
-                    <input type="number" name="ydstogo" value="10" />
+                    <div class="flex items-center">
+                        <input id="ydstogoSlider" class="slider" type="range" name="ydstogo" min="0" max="99"
+                            value="10">
+                        <input id="ydstogoInput" class="input ml-2" type="number" min="0" max="99" value="10">
+                    </div>
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-2" for="yardline_100">Yard
+                    <label class="block font-medium mb-2" for="ydline">Yard
                         Line</label>
-                    <input type="number" name="yardline_100" value="75" />
+                    <div class="flex items-center">
+                        <input id="ydlineSlider" class="slider" type="range" name="yardline_100" min="1" max="99"
+                            value="25">
+                        <input id="ydlineInput" class="input ml-2" type="number" min="1" max="99" value="25">
+                    </div>
                 </div>
 
                 <div>
@@ -105,5 +113,20 @@
         </div>
     </main>
 </body>
+
+<script>
+    var sliders = document.getElementsByClassName("slider");
+    var inputs = document.getElementsByClassName("input");
+
+    for (let i = 0; i < sliders.length; i++) {
+        sliders[i].addEventListener("input", function () {
+            inputs[i].value = sliders[i].value;
+        });
+
+        inputs[i].addEventListener("input", function () {
+            sliders[i].value = inputs[i].value;
+        });
+    }
+</script>
 
 </html>
