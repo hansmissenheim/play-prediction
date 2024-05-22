@@ -20,8 +20,17 @@
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-2" for="qtr">Quarter</label>
-                    <input type="number" name="qtr" value="1" />
+                    <label class="block font-medium mb-2">Quarter</label>
+                    <input id="qt1" type="radio" name="qtr" value="1" checked>
+                    <label class="font-small mr-2" for="qt1">1</label>
+                    <input id="qt2" type="radio" name="qtr" value="2">
+                    <label class="font-small mr-2" for="qt2">2</label>
+                    <input id="qt3" type="radio" name="qtr" value="3">
+                    <label class="font-small mr-2" for="qt3">3</label>
+                    <input id="qt4" type="radio" name="qtr" value="4">
+                    <label class="font-small mr-2" for="qt4">4</label>
+                    <input id="qtOT" type="radio" name="qtr" value="5">
+                    <label class="font-small mr-2" for="qtOT">OT</label>
                 </div>
 
                 <div>
@@ -31,7 +40,14 @@
 
                 <div>
                     <label class="block font-medium mb-2" for="down">Down</label>
-                    <input type="number" name="down" value="1" />
+                    <input id="down1" type="radio" name="down" value="1" checked>
+                    <label class="font-small mr-2" for="down1">1</label>
+                    <input id="down2" type="radio" name="down" value="2">
+                    <label class="font-small mr-2" for="down2">2</label>
+                    <input id="down3" type="radio" name="down" value="3">
+                    <label class="font-small mr-2" for="down3">3</label>
+                    <input id="down4" type="radio" name="down" value="4">
+                    <label class="font-small mr-2" for="down4">4</label>
                 </div>
 
                 <div>
@@ -47,18 +63,19 @@
                 </div>
 
                 <div>
-                    <div>
-                        <input name="shotgun" type="checkbox" value="1" />
-                    </div>
                     <label class="block font-medium mb-2" for="shotgun">Shotgun</label>
+                    <input id="shotgunYes" type="radio" name="shotgun" value="1">
+                    <label class="font-small mr-2" for="shotgunYes">Yes</label>
+                    <input id="shotgunNo" type="radio" name="shotgun" value="0" checked>
+                    <label class="font-small mr-2" for="shotgunNo">No</label>
                 </div>
 
                 <div>
-                    <div>
-                        <input name="no_huddle" type="checkbox" value="1" />
-                    </div>
-                    <label class="block font-medium mb-2" for="no_huddle">No
-                        Huddle</label>
+                    <label class="block font-medium mb-2" for="no_huddle">No Huddle</label>
+                    <input id="noHuddleYes" type="radio" name="no_huddle" value="1">
+                    <label class="font-small mr-2" for="noHuddleYes">Yes</label>
+                    <input id="noHuddleNo" type="radio" name="no_huddle" value="0" checked>
+                    <label class="font-small mr-2" for="noHuddleNo">No</label>
                 </div>
 
                 <div>
