@@ -13,7 +13,7 @@
     <main class="flex flex-col items-center h-screen py-8 bg-gray-100">
         <div class="max-w-6xl w-full px-6 py-8 bg-white rounded-lg shadow-lg">
             <h1 class="text-xl font-bold mb-4">Input Parameters</h1>
-            <form hx-post="/predict" hx-trigger="submit" hx-target="#predictionOutput">
+            <form hx-post="/predict" hx-trigger="submit" hx-target="#output">
                 <div>
                     <label for="drive">Drive</label>
                     <input type="number" name="drive" value="1" />
@@ -82,7 +82,7 @@
 
             <div>
                 <h1 class="text-xl font-bold mt-8 mb-4">Output</h1>
-                <h2 id="predictionOutput">0 | 0</h2>
+                <h2 id="output"></h2>
             </div>
         </div>
     </main>
