@@ -787,6 +787,18 @@ video {
   padding-bottom: 2rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pr-1 {
+  padding-right: 0.25rem;
+}
+
+.pr-1\.5 {
+  padding-right: 0.375rem;
+}
+
 .text-center {
   text-align: center;
 }

@@ -14,7 +14,7 @@ def predict():
     data = [
         int(request.form.get("drive", 1)),
         int(request.form.get("qtr", 1)),
-        int(request.form.get("quarter_seconds_remaining", 900)),
+        int(request.form.get("minutes", 0)) * 60 + int(request.form.get("seconds", 0)),
         int(request.form.get("down", 1)),
         int(request.form.get("ydstogo", 10)),
         int(request.form.get("yardline_100", 75)),
@@ -24,6 +24,7 @@ def predict():
         float(request.form.get("spread_line", 0.0)),
         int(request.form.get("season", 2023)),
     ]
+    print(data)
     xgb = load_model()
     play_type = xgb.predict([data])
 
