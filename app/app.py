@@ -21,7 +21,7 @@ def predict():
         int(request.form.get("shotgun", 0)),
         int(request.form.get("no_huddle", 0)),
         int(request.form.get("score_differential", 0)),
-        int(request.form.get("spread_line", 0)),
+        float(request.form.get("spread_line", 0.0)),
         int(request.form.get("season", 2023)),
     ]
     xgb = load_model()

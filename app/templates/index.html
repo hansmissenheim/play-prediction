@@ -94,7 +94,28 @@
                 <div>
                     <label class="block font-medium mb-2" for="spread_line">Spread
                         Line</label>
-                    <input type="number" name="spread_line" value="1" />
+                    <div class="flex items-center gap-x-1.5">
+                        <button id="spreadLineDecrement" type="button"
+                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                            </svg>
+                        </button>
+                        <input id="spreadLine"
+                            class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
+                            type="number" name="spread_line" step="0.5" value="0.0" />
+                        <button id="spreadLineIncrement" type="button"
+                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5v14"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <div>
@@ -127,6 +148,33 @@
             sliders[i].value = inputs[i].value;
         });
     }
+
+
+    document.getElementById("spreadLine").addEventListener("input", function (e) {
+        if (e.target.value === "") {
+            e.target.value = "0.0";
+        }
+    });
+
+    document.getElementById("spreadLineDecrement").addEventListener("click", function () {
+        const input = document.getElementById("spreadLine");
+        let value = parseFloat(input.value);
+        if (value != Math.floor(value * 2) / 2) {
+            input.value = (Math.floor(value * 2) / 2).toFixed(1);
+        } else {
+            input.value = (value - 0.5).toFixed(1);
+        }
+    });
+
+    document.getElementById("spreadLineIncrement").addEventListener("click", function () {
+        const input = document.getElementById("spreadLine");
+        let value = parseFloat(input.value);
+        if (value != Math.ceil(value * 2) / 2) {
+            input.value = (Math.ceil(value * 2) / 2).toFixed(1); // Round up
+        } else {
+            input.value = (value + 0.5).toFixed(1);
+        }
+    });
 </script>
 
 </html>
