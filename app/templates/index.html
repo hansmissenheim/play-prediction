@@ -116,8 +116,29 @@
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-2" for="score_differential">Score Differential</label>
-                    <input type="number" name="score_differential" value="1" />
+                    <label class="block font-medium mb-2" for="scoreDifferential">Score Differential</label>
+                    <div class="flex items-center gap-x-1.5">
+                        <button id="scoreDifferentialDecrement" type="button"
+                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                            </svg>
+                        </button>
+                        <input id="scoreDifferential"
+                            class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
+                            type="number" name="score_differential" min="0" step="1" value="0" />
+                        <button id="scoreDifferentialIncrement" type="button"
+                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5v14"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <div>
@@ -208,6 +229,24 @@
 
     document.getElementById("driveIncrement").addEventListener("click", function () {
         const input = document.getElementById("drive");
+        input.value = parseInt(input.value) + 1;
+    });
+
+    document.getElementById("scoreDifferential").addEventListener("input", function (e) {
+        if (e.target.value === "") {
+            e.target.value = "0";
+        }
+    });
+
+    document.getElementById("scoreDifferentialDecrement").addEventListener("click", function () {
+        const input = document.getElementById("scoreDifferential");
+        if (parseInt(input.value) > 0) {
+            input.value = parseInt(input.value) - 1;
+        }
+    });
+
+    document.getElementById("scoreDifferentialIncrement").addEventListener("click", function () {
+        const input = document.getElementById("scoreDifferential");
         input.value = parseInt(input.value) + 1;
     });
 
