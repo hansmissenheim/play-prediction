@@ -148,8 +148,23 @@
                 </div>
 
                 <div>
-                    <label class="block font-medium mb-2" for="season">Season</label>
-                    <input type="number" name="season" value="2023" />
+                    <label class="block font-medium mb-2" for="seasonInput">Season</label>
+                    <div id="dropdown" class="relative inline-block text-left">
+                        <span class="rounded-md shadow-sm">
+                            <button id="seasonButton" type="button"
+                                class="inline-flex justify-center text-medium leading-5 font-medium text-black hover:text-gray-800"
+                                aria-haspopup="true" aria-expanded="true">
+                                <span id="selectedSeason">2024</span>
+                            </button>
+                        </span>
+                        <input id="seasonInput" type="hidden" name="season" value="2024">
+                        <div id="dropdownMenu"
+                            class="origin-top-left absolute transform -translate-x-4 w-18 rounded-md shadow-lg max-h-64 overflow-auto">
+                            <div class="rounded-md bg-white shadow-xs">
+                                <ul id="seasonList" class="py-1 text-base leading-6">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <button type="submit"
@@ -221,6 +236,32 @@
             input.value = (value + 0.5).toFixed(1);
         }
     });
+
+    const dropdown = document.getElementById("dropdown");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const seasonButton = document.getElementById("seasonButton");
+    const seasonList = document.getElementById("seasonList");
+    const seasonInput = document.getElementById("seasonInput");
+    const selectedSeason = document.getElementById("selectedSeason");
+
+    for (let year = 2024; year >= 1999; year--) {
+        const li = document.createElement("li");
+        li.textContent = year;
+        li.classList.add("px-4", "py-0.5", "cursor-pointer", "hover:underline", "underline-offset-2");
+        li.onclick = function () {
+            seasonInput.value = year;
+            selectedSeason.textContent = year;
+            dropdownMenu.style.display = "none";
+        };
+        seasonList.appendChild(li);
+    }
+
+
+    seasonButton.onclick = function () {
+        dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
+    };
+
+    dropdownMenu.style.display = "none";
 </script>
 
 </html>
