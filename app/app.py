@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import load_model
+from model import PlayPredictionModel
 
 app = Flask(__name__)
 
@@ -24,8 +24,7 @@ def predict():
         float(request.form.get("spread_line", 0.0)),
         int(request.form.get("season", 2023)),
     ]
-    print(data)
-    xgb = load_model()
+    xgb = PlayPredictionModel().model
     play_type = xgb.predict([data])
 
     return "Pass" if play_type[0] == 0 else "Run"
