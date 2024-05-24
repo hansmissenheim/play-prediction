@@ -7,6 +7,16 @@ MODEL_PATH = (
 )
 
 
+class PlayPredictionModel:
+    _instance = None
+    model: XGBClassifier
+
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+
 def load_model():
     model = XGBClassifier()
     model.load_model(MODEL_PATH)
