@@ -10,179 +10,181 @@
 </head>
 
 <body>
-    <main class="flex flex-col items-center h-screen py-8 bg-gray-100">
-        <div class="max-w-6xl w-full px-6 py-8 bg-white rounded-lg shadow-lg">
+    <main class="flex flex-col items-center h-screen py-8 px-8 bg-gray-100">
+        <div class="max-w-6xl w-full px-6 py-6 bg-white rounded-lg shadow-lg">
             <h1 class="text-xl font-bold mb-4">Input Parameters</h1>
             <form hx-post="/predict" hx-trigger="submit" hx-target="#output">
-                <div>
-                    <label class="block font-medium mb-2" for="drive">Drive</label>
-                    <div class="flex items-center gap-x-1.5">
-                        <button id="driveDecrement" type="button"
-                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
-                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                            </svg>
-                        </button>
-                        <input id="drive"
-                            class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
-                            type="number" name="spread_line" min="1" step="1" value="1" />
-                        <button id="driveIncrement" type="button"
-                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
-                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5v14"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2">Quarter</label>
-                    <input id="qt1" type="radio" name="qtr" value="1" checked>
-                    <label class="font-small mr-2" for="qt1">1</label>
-                    <input id="qt2" type="radio" name="qtr" value="2">
-                    <label class="font-small mr-2" for="qt2">2</label>
-                    <input id="qt3" type="radio" name="qtr" value="3">
-                    <label class="font-small mr-2" for="qt3">3</label>
-                    <input id="qt4" type="radio" name="qtr" value="4">
-                    <label class="font-small mr-2" for="qt4">4</label>
-                    <input id="qtOT" type="radio" name="qtr" value="5">
-                    <label class="font-small mr-2" for="qtOT">OT</label>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="time_remaining">Time Remaining</label>
+                <div class="pb-6 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <div>
-                        <input
-                            class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent"
-                            type="number" id="minutes" name="minutes" min="0" max="15" value="15">
-                        <span class="pr-1.5">:</span>
-                        <input
-                            class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent"
-                            type="number" id="seconds" name="seconds" min="0" max="60" value="00">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="down">Down</label>
-                    <input id="down1" type="radio" name="down" value="1" checked>
-                    <label class="font-small mr-2" for="down1">1</label>
-                    <input id="down2" type="radio" name="down" value="2">
-                    <label class="font-small mr-2" for="down2">2</label>
-                    <input id="down3" type="radio" name="down" value="3">
-                    <label class="font-small mr-2" for="down3">3</label>
-                    <input id="down4" type="radio" name="down" value="4">
-                    <label class="font-small mr-2" for="down4">4</label>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="ydstogo">Yards To
-                        Go</label>
-                    <div class="flex items-center">
-                        <input id="ydstogoSlider" class="slider" type="range" name="ydstogo" min="0" max="99"
-                            value="10">
-                        <input id="ydstogoInput" class="input ml-2" type="number" min="0" max="99" value="10">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="ydline">Yard
-                        Line</label>
-                    <div class="flex items-center">
-                        <input id="ydlineSlider" class="slider" type="range" name="yardline_100" min="1" max="99"
-                            value="25">
-                        <input id="ydlineInput" class="input ml-2" type="number" min="1" max="99" value="25">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="shotgun">Shotgun</label>
-                    <input id="shotgunYes" type="radio" name="shotgun" value="1">
-                    <label class="font-small mr-2" for="shotgunYes">Yes</label>
-                    <input id="shotgunNo" type="radio" name="shotgun" value="0" checked>
-                    <label class="font-small mr-2" for="shotgunNo">No</label>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="no_huddle">No Huddle</label>
-                    <input id="noHuddleYes" type="radio" name="no_huddle" value="1">
-                    <label class="font-small mr-2" for="noHuddleYes">Yes</label>
-                    <input id="noHuddleNo" type="radio" name="no_huddle" value="0" checked>
-                    <label class="font-small mr-2" for="noHuddleNo">No</label>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="scoreDifferential">Score Differential</label>
-                    <div class="flex items-center gap-x-1.5">
-                        <button id="scoreDifferentialDecrement" type="button"
-                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
-                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                            </svg>
-                        </button>
-                        <input id="scoreDifferential"
-                            class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
-                            type="number" name="score_differential" min="0" step="1" value="0" />
-                        <button id="scoreDifferentialIncrement" type="button"
-                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
-                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5v14"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="spread_line">Spread
-                        Line</label>
-                    <div class="flex items-center gap-x-1.5">
-                        <button id="spreadLineDecrement" type="button"
-                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
-                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                            </svg>
-                        </button>
-                        <input id="spreadLine"
-                            class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
-                            type="number" name="spread_line" step="0.5" value="0.0" />
-                        <button id="spreadLineIncrement" type="button"
-                            class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
-                            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5v14"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium mb-2" for="seasonInput">Season</label>
-                    <div id="dropdown" class="relative inline-block text-left">
-                        <span class="rounded-md shadow-sm">
-                            <button id="seasonButton" type="button"
-                                class="inline-flex justify-center text-medium leading-5 font-medium text-black hover:text-gray-800"
-                                aria-haspopup="true" aria-expanded="true">
-                                <span id="selectedSeason">2024</span>
+                        <label class="block font-medium mb-2" for="drive">Drive</label>
+                        <div class="flex items-center gap-x-1.5">
+                            <button id="driveDecrement" type="button"
+                                class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                </svg>
                             </button>
-                        </span>
-                        <input id="seasonInput" type="hidden" name="season" value="2024">
-                        <div id="dropdownMenu"
-                            class="origin-top-left absolute transform -translate-x-4 w-18 rounded-md shadow-lg max-h-64 overflow-auto">
-                            <div class="rounded-md bg-white shadow-xs">
-                                <ul id="seasonList" class="py-1 text-base leading-6">
+                            <input id="drive"
+                                class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
+                                type="number" name="spread_line" min="1" step="1" value="1" />
+                            <button id="driveIncrement" type="button"
+                                class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2">Quarter</label>
+                        <input id="qt1" type="radio" name="qtr" value="1" checked>
+                        <label class="font-small mr-2" for="qt1">1</label>
+                        <input id="qt2" type="radio" name="qtr" value="2">
+                        <label class="font-small mr-2" for="qt2">2</label>
+                        <input id="qt3" type="radio" name="qtr" value="3">
+                        <label class="font-small mr-2" for="qt3">3</label>
+                        <input id="qt4" type="radio" name="qtr" value="4">
+                        <label class="font-small mr-2" for="qt4">4</label>
+                        <input id="qtOT" type="radio" name="qtr" value="5">
+                        <label class="font-small mr-2" for="qtOT">OT</label>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="time_remaining">Time Remaining</label>
+                        <div>
+                            <input
+                                class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent"
+                                type="number" id="minutes" name="minutes" min="0" max="15" value="15">
+                            <span class="pr-1.5">:</span>
+                            <input
+                                class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent"
+                                type="number" id="seconds" name="seconds" min="0" max="60" value="00">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="down">Down</label>
+                        <input id="down1" type="radio" name="down" value="1" checked>
+                        <label class="font-small mr-2" for="down1">1</label>
+                        <input id="down2" type="radio" name="down" value="2">
+                        <label class="font-small mr-2" for="down2">2</label>
+                        <input id="down3" type="radio" name="down" value="3">
+                        <label class="font-small mr-2" for="down3">3</label>
+                        <input id="down4" type="radio" name="down" value="4">
+                        <label class="font-small mr-2" for="down4">4</label>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="ydstogo">Yards To
+                            Go</label>
+                        <div class="flex items-center">
+                            <input id="ydstogoSlider" class="slider" type="range" name="ydstogo" min="0" max="99"
+                                value="10">
+                            <input id="ydstogoInput" class="input ml-2" type="number" min="0" max="99" value="10">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="ydline">Yard
+                            Line</label>
+                        <div class="flex items-center">
+                            <input id="ydlineSlider" class="slider" type="range" name="yardline_100" min="1" max="99"
+                                value="25">
+                            <input id="ydlineInput" class="input ml-2" type="number" min="1" max="99" value="25">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="shotgun">Shotgun</label>
+                        <input id="shotgunYes" type="radio" name="shotgun" value="1">
+                        <label class="font-small mr-2" for="shotgunYes">Yes</label>
+                        <input id="shotgunNo" type="radio" name="shotgun" value="0" checked>
+                        <label class="font-small mr-2" for="shotgunNo">No</label>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="no_huddle">No Huddle</label>
+                        <input id="noHuddleYes" type="radio" name="no_huddle" value="1">
+                        <label class="font-small mr-2" for="noHuddleYes">Yes</label>
+                        <input id="noHuddleNo" type="radio" name="no_huddle" value="0" checked>
+                        <label class="font-small mr-2" for="noHuddleNo">No</label>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="scoreDifferential">Score Differential</label>
+                        <div class="flex items-center gap-x-1.5">
+                            <button id="scoreDifferentialDecrement" type="button"
+                                class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                </svg>
+                            </button>
+                            <input id="scoreDifferential"
+                                class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
+                                type="number" name="score_differential" min="0" step="1" value="0" />
+                            <button id="scoreDifferentialIncrement" type="button"
+                                class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="spread_line">Spread
+                            Line</label>
+                        <div class="flex items-center gap-x-1.5">
+                            <button id="spreadLineDecrement" type="button"
+                                class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                </svg>
+                            </button>
+                            <input id="spreadLine"
+                                class="p-0 w-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none bg-transparent border-0 text-gray-800 text-center focus:ring-0"
+                                type="number" name="spread_line" step="0.5" value="0.0" />
+                            <button id="spreadLineIncrement" type="button"
+                                class="size-6 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-black text-white hover:bg-gray-800">
+                                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium mb-2" for="seasonInput">Season</label>
+                        <div id="dropdown" class="relative inline-block text-left">
+                            <span class="rounded-md shadow-sm">
+                                <button id="seasonButton" type="button"
+                                    class="inline-flex justify-center text-medium leading-5 font-medium text-black hover:text-gray-800"
+                                    aria-haspopup="true" aria-expanded="true">
+                                    <span id="selectedSeason">2024</span>
+                                </button>
+                            </span>
+                            <input id="seasonInput" type="hidden" name="season" value="2024">
+                            <div id="dropdownMenu"
+                                class="origin-top-left absolute transform -translate-x-4 w-18 rounded-md shadow-lg max-h-64 overflow-auto">
+                                <div class="rounded-md bg-white shadow-xs">
+                                    <ul id="seasonList" class="py-1 text-base leading-6">
+                                </div>
                             </div>
                         </div>
                     </div>
