@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Flask App Debug",
+            "type": "shell",
+            "command": "flask --app app/app.py --debug run",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Tailwindcss Debug",
+            "type": "shell",
+            "command": "tailwindcss -i ./app/static/src/input.css -o ./app/static/css/main.css --watch --minify",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
