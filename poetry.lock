@@ -1216,6 +1216,19 @@ pandas = ">1"
 python-snappy = ">0.5"
 
 [[package]]
+name = "nflpp"
+version = "0.1.0"
+description = ""
+optional = false
+python-versions = "*"
+files = []
+develop = true
+
+[package.source]
+type = "directory"
+url = "nflpp"
+
+[[package]]
 name = "numpy"
 version = "1.26.4"
 description = "Fundamental package for array computing in Python"
@@ -2635,4 +2648,4 @@ scikit-learn = ["scikit-learn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "611bc80bad7ccdad3c8a4a3dd7a50b3ca3dd3fe262ec690df7ecc6458a9713ce"
+content-hash = "465fb31b20fe6a64f7899454c03ee749f0c72f84fc40e7f694978a1de74c654c"
