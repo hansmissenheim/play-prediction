@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "play-prediction"
+version = "0.1.0"
+description = "AI-powered NFL play prediction & betting dashboard"
+authors = ["Hans Missenheim <hansmissenheim@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.3"
+matplotlib = "^3.9.0"
+nfl-data-py = "^0.3.1"
+pandas = "^2.2.2"
+scikit-learn = "^1.5.0"
+torch = { version = "^2.3.1+cu121", source = "pytorch-gpu-src" }
+torchaudio = { version = "^2.3.1+cu121", source = "pytorch-gpu-src" }
+torchvision = { version = "^0.18.1+cu121", source = "pytorch-gpu-src" }
+uvicorn = { extras = ["standard"], version = "^0.30.1" }
+xgboost = "^2.0.3"
+
+[[tool.poetry.source]]
+name = "pytorch-gpu-src"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.8"
+ipykernel = "^6.29.4"
+
+[tool.ruff]
+target-version = "py310"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
