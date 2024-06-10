@@ -1,10 +1,14 @@
+import matplotlib as mpl
+import mplcatppuccin
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix
 
-AXIS_LABELS = ["Pass", "Run"]
+mpl.style.use("mocha")
 
+
+AXIS_LABELS = ["Pass", "Run"]
 Array = pd.Series | np.ndarray
 
 
