@@ -5,7 +5,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.metrics import auc, confusion_matrix, roc_curve
 
-mpl.style.use("mocha")
+mpl.style.use("mocha")  # type: ignore
 
 
 AXIS_LABELS = ["Pass", "Run"]
