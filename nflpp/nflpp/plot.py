@@ -30,8 +30,7 @@ def plot_confusion_matrix(targets: Array, predictions: Array):
 
 
 def plot_roc_curve(targets: Array, probs: Array):
-    y_score = probs[:, 1]
-    false_positive_rate, true_positive_rate, _ = roc_curve(targets, y_score)
+    false_positive_rate, true_positive_rate, _ = roc_curve(targets, probs)
     roc_auc = auc(false_positive_rate, true_positive_rate)
 
     curve_label = f"ROC curve (area = {roc_auc:.2f})"
