@@ -47,3 +47,20 @@ def plot_roc_curve(targets: Array, probs: Array):
     plt.ylim([0, 1.01])
 
     plt.show()
+
+
+def plot_learning_curves(eval_results: dict[str, dict[str, list[float]]]) -> None:
+    eval_metrics = set()
+    for v in eval_results.values():
+        eval_metrics.update(v.keys())
+
+    for metric in eval_metrics:
+        labels = {"validation_0": "Train", "validation_1": "Test"}
+        for label, results in eval_results.items():
+            plt.plot(results[metric], label=labels.get(label, label))
+
+        plt.title(f"XGBoost {metric.capitalize()}")
+        plt.xlabel("Iterations")
+        plt.ylabel(metric.capitalize())
+        plt.legend()
+        plt.show()
