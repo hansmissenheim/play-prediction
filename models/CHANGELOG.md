@@ -1,5 +1,11 @@
 # Changelog for Play Prediction XGBoost Model
 
+## Version 1.1.1 (2024-06-11)
+- **GPU Training**
+  - Processed data converted to DMatrix
+  - Training moved to GPU if available
+  - Model performance: Accuracy = 72.42%, F1-score = 0.66.
+
 ## Version 1.1.0 (2024-06-06)
 - **Identification Added**
   - Added identification features: poscoach, posteam
