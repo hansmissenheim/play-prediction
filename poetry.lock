@@ -63,6 +63,23 @@ astroid = ["astroid (>=1,<2)", "astroid (>=2,<4)"]
 test = ["astroid (>=1,<2)", "astroid (>=2,<4)", "pytest"]
 
 [[package]]
+name = "bayesian-optimization"
+version = "1.4.3"
+description = "Bayesian Optimization package"
+optional = false
+python-versions = ">= 3.7"
+files = [
+    {file = "bayesian-optimization-1.4.3.tar.gz", hash = "sha256:f9a448e1b52d961301cbc953ce4199709f6c26b1c88994c9b4dadb7752a64550"},
+    {file = "bayesian_optimization-1.4.3-py3-none-any.whl", hash = "sha256:2719272d5825f1ba7d7609f3b1c1fdca13eba1b7ad52a5ca2e62f34154ecae28"},
+]
+
+[package.dependencies]
+colorama = ">=0.4.6"
+numpy = ">=1.9.0"
+scikit-learn = ">=0.18.0"
+scipy = ">=1.0.0"
+
+[[package]]
 name = "blinker"
 version = "1.8.2"
 description = "Fast, simple object-to-object and broadcast signaling"
@@ -2673,4 +2690,4 @@ scikit-learn = ["scikit-learn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b5168e00c4c4e6a31aeb386deaf15bd0a59fa75d17713309f39cfdf02a7a2036"
+content-hash = "e3c7f7c5893407bbfa5a2b61b7abfe547ba4dc14c641b2bd8ae950c243e00645"
