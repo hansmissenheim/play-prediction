@@ -1,12 +1,21 @@
 from flask import Flask, render_template, request
 from model import PlayPredictionModel
+from utils import encodings
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    if encodings:
+        teams = encodings["posteam"]
+        coaches = encodings["poscoach"]
+
+    return render_template(
+        "index.html",
+        teams=teams,
+        coaches=coaches,
+    )
 
 
 @app.route("/predict", methods=["POST"])
