@@ -22,6 +22,9 @@ def index():
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    xgb = PlayPredictionModel().model
+    features = xgb.get_booster().feature_names
+
     data = [
         int(request.form.get("drive", 1)),
         int(request.form.get("qtr", 1)),
@@ -29,13 +32,27 @@ def predict():
         int(request.form.get("down", 1)),
         int(request.form.get("ydstogo", 10)),
         int(request.form.get("yardline_100", 75)),
-        int(request.form.get("shotgun", 0)),
-        int(request.form.get("no_huddle", 0)),
         int(request.form.get("score_differential", 0)),
         float(request.form.get("spread_line", 0.0)),
         int(request.form.get("season", 2023)),
     ]
-    xgb = PlayPredictionModel().model
+    if "shotgun" in features:
+        data.append(
+            int(request.form.get("shotgun", 0)),
+        )
+    if "no_huddle" in features:
+        data.append(
+            int(request.form.get("no_huddle", 0)),
+        )
+    if "posteam" in features:
+        data.append(
+            int(request.form.get("team", 1)),
+        )
+    if "poscoach" in features:
+        data.append(
+            int(request.form.get("coach", 1)),
+        )
+
     play_type = xgb.predict([data])
     return "Pass" if play_type[0] == 0 else "Run"
 
@@ -46,5 +63,4 @@ def load_model():
         PlayPredictionModel().load_model(MODEL_DIR / model_name)
     else:
         PlayPredictionModel().load_model()
-
     return "", 200
