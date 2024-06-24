@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from model import MODEL_DIR, PlayPredictionModel
-from utils import encodings
+from utils import betting_odds, encodings
 
 app = Flask(__name__)
 
@@ -53,8 +53,14 @@ def predict():
             int(request.form.get("coach", 1)),
         )
 
-    play_type = xgb.predict([data])
-    return "Pass" if play_type[0] == 0 else "Run"
+    prediction = xgb.predict_proba([data])
+    p_pass = prediction[0][0]
+    p_run = prediction[0][1]
+    return render_template(
+        "output.html",
+        run_odds=betting_odds(p_run),
+        pass_odds=betting_odds(p_pass),
+    )
 
 
 @app.route("/model", methods=["POST"])
