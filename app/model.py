@@ -23,4 +23,8 @@ class PlayPredictionModel:
 
         model = XGBClassifier()
         model.load_model(model_path)
+
+        if cls._instance:
+            cls._instance.model = model
+
         return model

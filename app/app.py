@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import PlayPredictionModel
+from model import MODEL_DIR, PlayPredictionModel
 from utils import encodings
 
 app = Flask(__name__)
@@ -10,11 +10,13 @@ def index():
     if encodings:
         teams = encodings["posteam"]
         coaches = encodings["poscoach"]
-
+    models = [model for model in MODEL_DIR.iterdir() if model.suffix != ".md"]
+    models_mapping = {model.stem: model.name for model in sorted(models, reverse=True)}
     return render_template(
         "index.html",
         teams=teams,
         coaches=coaches,
+        models=models_mapping,
     )
 
 
@@ -36,3 +38,13 @@ def predict():
     xgb = PlayPredictionModel().model
     play_type = xgb.predict([data])
     return "Pass" if play_type[0] == 0 else "Run"
+
+
+@app.route("/model", methods=["POST"])
+def load_model():
+    if model_name := request.form.get("model"):
+        PlayPredictionModel().load_model(MODEL_DIR / model_name)
+    else:
+        PlayPredictionModel().load_model()
+
+    return "", 200
