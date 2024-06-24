@@ -35,5 +35,4 @@ def predict():
     ]
     xgb = PlayPredictionModel().model
     play_type = xgb.predict([data])
-
     return "Pass" if play_type[0] == 0 else "Run"
