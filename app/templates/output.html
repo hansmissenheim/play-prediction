@@ -1,0 +1,19 @@
+<div class="flex items-center justify-center">
+    <div class="text-right">
+        <h1 class="text-medium">Run Odds</h1>
+        {% if run_odds and run_odds > 0 %}
+        <h2 class="text-6xl font-bold text-green-500">+{{ run_odds }}</h2>
+        {% else %}
+        <h2 class="text-6xl font-bold text-red-500">{{ run_odds }}</h2>
+        {% endif %}
+    </div>
+    <span class="text-6xl text-black h-12 mx-4">|</span>
+    <div class="text-left">
+        <h1 class="text-medium">Pass Odds</h1>
+        {% if pass_odds and pass_odds > 0 %}
+        <h2 class="text-6xl font-bold text-green-500">+{{ pass_odds }}</h2>
+        {% else %}
+        <h2 class="text-6xl font-bold text-red-500">{{ pass_odds }}</h2>
+        {% endif %}
+    </div>
+</div>

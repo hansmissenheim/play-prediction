@@ -2,9 +2,8 @@ from pathlib import Path
 
 from xgboost import XGBClassifier
 
-MODEL_PATH = (
-    Path(__file__).parents[1] / "models" / "xgboost_v1_2024-05-16_05-35-56_0.7185.json"
-)
+MODEL_DIR = Path(__file__).parents[1] / "models"
+LATEST_MODEL = sorted(MODEL_DIR.iterdir())[-1]
 
 
 class PlayPredictionModel:
@@ -18,7 +17,14 @@ class PlayPredictionModel:
         return cls._instance
 
     @classmethod
-    def load_model(cls):
+    def load_model(cls, model_path: Path | None = None):
+        if model_path is None:
+            model_path = LATEST_MODEL
+
         model = XGBClassifier()
-        model.load_model(MODEL_PATH)
+        model.load_model(model_path)
+
+        if cls._instance:
+            cls._instance.model = model
+
         return model
